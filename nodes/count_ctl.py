@@ -33,7 +33,6 @@ class Controller(udi_interface.Node):
         self.n_queue = []
 
         self.Parameters = Custom(polyglot, 'customparams')
-        self.Notices = Custom(polyglot, 'notices')
 
         # subscribe to the events we want
         polyglot.subscribe(polyglot.CUSTOMPARAMS, self.parameterHandler)
@@ -87,7 +86,7 @@ class Controller(udi_interface.Node):
                 node.setDriver('GV1', (self.count * mult), True, True)
 
                 # be fancy and display a notice on the polyglot dashboard
-                self.Notices['count2'] = 'Current count is {}'.format(self.count)
+                self.poly.Notices['count2'] = 'Current count is {}'.format(self.count)
             else:
                 LOGGER.error('Failed to find "controller" node')
 
